@@ -255,7 +255,7 @@ provisioning:
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
   ##
   nodeSelector:
-    storage: worker
+    dedicated: worker
   ## @param provisioning.podLabels Extra labels for provisioning pods
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
