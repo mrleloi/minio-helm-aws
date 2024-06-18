@@ -1,0 +1,28 @@
+---
+# Source: minio/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: minio
+  namespace: "default"
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/version: 2024.3.15
+    helm.sh/chart: minio-14.1.0
+    app.kubernetes.io/component: metrics
+spec:
+  groups:
+  - name: minio
+    rules:
+      - alert: minio cluster nodes offline
+        annotations:
+          description: minio cluster nodes offline, pod {{ $labels.pod }} service
+            {{ $labels.job }} offline
+          summary: minio cluster nodes offline
+        expr: minio_cluster_nodes_offline_total > 0
+        for: 10m
+        labels:
+          group: test
+          severity: critical

@@ -1,0 +1,1161 @@
+---
+# Source: minio/templates/configmap_grafana_dashboards.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minio-grafana-dashboards-overview.json
+  namespace: cattle-dashboards
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/version: 2024.3.15
+    helm.sh/chart: minio-14.1.0
+    grafana_dashboard: "1"
+  annotations:
+    {}
+data:
+  overview.json: "{\r\n  \"annotations\": {\r\n    \"list\": [\r\n      {\r\n        \"builtIn\":
+    1,\r\n        \"datasource\": {\r\n          \"type\": \"datasource\",\r\n          \"uid\":
+    \"grafana\"\r\n        },\r\n        \"enable\": true,\r\n        \"hide\": true,\r\n
+    \       \"iconColor\": \"rgba(0, 211, 255, 1)\",\r\n        \"name\": \"Annotations
+    & Alerts\",\r\n        \"target\": {\r\n          \"limit\": 100,\r\n          \"matchAny\":
+    false,\r\n          \"tags\": [],\r\n          \"type\": \"dashboard\"\r\n        },\r\n
+    \       \"type\": \"dashboard\"\r\n      }\r\n    ]\r\n  },\r\n  \"description\":
+    \"MinIO Grafana Dashboard - https://min.io/\",\r\n  \"editable\": true,\r\n  \"fiscalYearStartMonth\":
+    0,\r\n  \"gnetId\": 13502,\r\n  \"graphTooltip\": 0,\r\n  \"links\": [\r\n    {\r\n
+    \     \"icon\": \"external link\",\r\n      \"includeVars\": true,\r\n      \"keepTime\":
+    true,\r\n      \"tags\": [\r\n        \"minio\"\r\n      ],\r\n      \"type\": \"dashboards\"\r\n
+    \   }\r\n  ],\r\n  \"liveNow\": false,\r\n  \"panels\": [\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"description\": \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"mappings\": [\r\n            {\r\n              \"options\": {\r\n
+    \               \"match\": \"null\",\r\n                \"result\": {\r\n                  \"text\":
+    \"N/A\"\r\n                }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"percentage\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"dtdurations\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 6,\r\n        \"w\": 3,\r\n
+    \       \"x\": 0,\r\n        \"y\": 0\r\n      },\r\n      \"id\": 1,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"none\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"mean\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"time() -
+    max(minio_node_process_starttime_seconds{job=~\\\"$scrape_jobs\\\"})\",\r\n          \"format\":
+    \"time_series\",\r\n          \"instant\": true,\r\n          \"interval\": \"\",\r\n
+    \         \"intervalFactor\": 1,\r\n          \"legendFormat\": \"{{instance}}\",\r\n
+    \         \"metric\": \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Uptime\",\r\n
+    \     \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\":
+    \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"mappings\":
+    [\r\n            {\r\n              \"options\": {\r\n                \"match\":
+    \"null\",\r\n                \"result\": {\r\n                  \"text\": \"N/A\"\r\n
+    \               }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"bytes\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n
+    \       \"x\": 3,\r\n        \"y\": 0\r\n      },\r\n      \"id\": 65,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"last\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"sum by (instance)
+    (minio_s3_traffic_received_bytes{job=~\\\"$scrape_jobs\\\"})\",\r\n          \"format\":
+    \"table\",\r\n          \"hide\": false,\r\n          \"instant\": false,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"{{instance}}\",\r\n
+    \         \"metric\": \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Total S3 Ingress\",\r\n
+    \     \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\":
+    \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"color\":
+    {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n          \"custom\":
+    {\r\n            \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            }\r\n          },\r\n          \"mappings\":
+    [\r\n            {\r\n              \"options\": {\r\n                \"match\":
+    \"null\",\r\n                \"result\": {\r\n                  \"text\": \"N/A\"\r\n
+    \               }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"unit\": \"bytes\"\r\n        },\r\n
+    \       \"overrides\": [\r\n          {\r\n            \"matcher\": {\r\n              \"id\":
+    \"byName\",\r\n              \"options\": \"Free\"\r\n            },\r\n            \"properties\":
+    [\r\n              {\r\n                \"id\": \"color\",\r\n                \"value\":
+    {\r\n                  \"fixedColor\": \"green\",\r\n                  \"mode\":
+    \"fixed\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n
+    \         {\r\n            \"matcher\": {\r\n              \"id\": \"byName\",\r\n
+    \             \"options\": \"Used\"\r\n            },\r\n            \"properties\":
+    [\r\n              {\r\n                \"id\": \"color\",\r\n                \"value\":
+    {\r\n                  \"fixedColor\": \"orange\",\r\n                  \"mode\":
+    \"fixed\"\r\n                }\r\n              }\r\n            ]\r\n          }\r\n
+    \       ]\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 6,\r\n        \"w\":
+    4,\r\n        \"x\": 6,\r\n        \"y\": 0\r\n      },\r\n      \"id\": 50,\r\n
+    \     \"interval\": \"1m\",\r\n      \"links\": [],\r\n      \"maxDataPoints\":
+    100,\r\n      \"options\": {\r\n        \"displayLabels\": [],\r\n        \"legend\":
+    {\r\n          \"displayMode\": \"table\",\r\n          \"placement\": \"bottom\",\r\n
+    \         \"showLegend\": true,\r\n          \"values\": [\r\n            \"percent\"\r\n
+    \         ]\r\n        },\r\n        \"pieType\": \"donut\",\r\n        \"reduceOptions\":
+    {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n          ],\r\n          \"fields\":
+    \"\",\r\n          \"values\": false\r\n        },\r\n        \"tooltip\": {\r\n
+    \         \"mode\": \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n
+    \     },\r\n      \"pluginVersion\": \"8.2.1\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"topk(1, sum(minio_cluster_capacity_usable_total_bytes{job=~\\\"$scrape_jobs\\\"})
+    by (instance)) - topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=~\\\"$scrape_jobs\\\"})
+    by (instance))\",\r\n          \"format\": \"time_series\",\r\n          \"instant\":
+    false,\r\n          \"interval\": \"1m\",\r\n          \"intervalFactor\": 1,\r\n
+    \         \"legendFormat\": \"Used\",\r\n          \"refId\": \"A\",\r\n          \"step\":
+    300\r\n        },\r\n        {\r\n          \"datasource\": {\r\n            \"type\":
+    \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=~\\\"$scrape_jobs\\\"})
+    by (instance)) \",\r\n          \"hide\": false,\r\n          \"interval\": \"1m\",\r\n
+    \         \"legendFormat\": \"Free\",\r\n          \"refId\": \"B\"\r\n        }\r\n
+    \     ],\r\n      \"title\": \"Capacity\",\r\n      \"type\": \"piechart\"\r\n    },\r\n
+    \   {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"color\": {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n
+    \         \"custom\": {\r\n            \"axisCenteredZero\": false,\r\n            \"axisColorMode\":
+    \"text\",\r\n            \"axisLabel\": \"\",\r\n            \"axisPlacement\":
+    \"auto\",\r\n            \"barAlignment\": 0,\r\n            \"drawStyle\": \"line\",\r\n
+    \           \"fillOpacity\": 10,\r\n            \"gradientMode\": \"none\",\r\n
+    \           \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            },\r\n            \"lineInterpolation\":
+    \"linear\",\r\n            \"lineWidth\": 1,\r\n            \"pointSize\": 5,\r\n
+    \           \"scaleDistribution\": {\r\n              \"type\": \"linear\"\r\n            },\r\n
+    \           \"showPoints\": \"never\",\r\n            \"spanNulls\": true,\r\n            \"stacking\":
+    {\r\n              \"group\": \"A\",\r\n              \"mode\": \"none\"\r\n            },\r\n
+    \           \"thresholdsStyle\": {\r\n              \"mode\": \"off\"\r\n            }\r\n
+    \         },\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"red\",\r\n                \"value\": 80\r\n              }\r\n
+    \           ]\r\n          },\r\n          \"unit\": \"bytes\"\r\n        },\r\n
+    \       \"overrides\": [\r\n          {\r\n            \"matcher\": {\r\n              \"id\":
+    \"byName\",\r\n              \"options\": \"Objects\"\r\n            },\r\n            \"properties\":
+    [\r\n              {\r\n                \"id\": \"color\",\r\n                \"value\":
+    {\r\n                  \"fixedColor\": \"blue\",\r\n                  \"mode\":
+    \"fixed\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n
+    \         {\r\n            \"__systemRef\": \"hideSeriesFrom\",\r\n            \"matcher\":
+    {\r\n              \"id\": \"byNames\",\r\n              \"options\": {\r\n                \"mode\":
+    \"exclude\",\r\n                \"names\": [\r\n                  \"Usage\"\r\n
+    \               ],\r\n                \"prefix\": \"All except:\",\r\n                \"readOnly\":
+    true\r\n              }\r\n            },\r\n            \"properties\": [\r\n              {\r\n
+    \               \"id\": \"custom.hideFrom\",\r\n                \"value\": {\r\n
+    \                 \"legend\": false,\r\n                  \"tooltip\": false,\r\n
+    \                 \"viz\": true\r\n                }\r\n              }\r\n            ]\r\n
+    \         }\r\n        ]\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 6,\r\n
+    \       \"w\": 6,\r\n        \"x\": 10,\r\n        \"y\": 0\r\n      },\r\n      \"id\":
+    68,\r\n      \"options\": {\r\n        \"legend\": {\r\n          \"calcs\": [],\r\n
+    \         \"displayMode\": \"list\",\r\n          \"placement\": \"bottom\",\r\n
+    \         \"showLegend\": false\r\n        },\r\n        \"tooltip\": {\r\n          \"mode\":
+    \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n      },\r\n      \"pluginVersion\":
+    \"8.2.1\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\": {\r\n
+    \           \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"editorMode\": \"code\",\r\n          \"exemplar\": true,\r\n
+    \         \"expr\": \"max(minio_cluster_usage_total_bytes{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"Usage\",\r\n          \"range\":
+    true,\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"title\":
+    \"Data Usage Growth\",\r\n      \"type\": \"timeseries\"\r\n    },\r\n    {\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"color\": {\r\n            \"mode\": \"continuous-GrYlRd\"\r\n          },\r\n
+    \         \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         }\r\n        },\r\n        \"overrides\": []\r\n      },\r\n      \"gridPos\":
+    {\r\n        \"h\": 6,\r\n        \"w\": 5,\r\n        \"x\": 16,\r\n        \"y\":
+    0\r\n      },\r\n      \"id\": 52,\r\n      \"links\": [],\r\n      \"options\":
+    {\r\n        \"displayMode\": \"lcd\",\r\n        \"maxVizHeight\": 300,\r\n        \"minVizHeight\":
+    16,\r\n        \"minVizWidth\": 8,\r\n        \"namePlacement\": \"auto\",\r\n        \"orientation\":
+    \"horizontal\",\r\n        \"reduceOptions\": {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n
+    \         ],\r\n          \"fields\": \"\",\r\n          \"values\": false\r\n        },\r\n
+    \       \"showUnfilled\": true,\r\n        \"sizing\": \"auto\",\r\n        \"valueMode\":
+    \"color\"\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"disableTextWrap\":
+    false,\r\n          \"editorMode\": \"code\",\r\n          \"exemplar\": true,\r\n
+    \         \"expr\": \"minio_cluster_objects_size_distribution{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"fullMetaSearch\": false,\r\n
+    \         \"includeNullMetadata\": true,\r\n          \"instant\": false,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"{{range}}\",\r\n
+    \         \"refId\": \"A\",\r\n          \"step\": 300,\r\n          \"useBackend\":
+    false\r\n        }\r\n      ],\r\n      \"title\": \"Object Size Distribution\",\r\n
+    \     \"type\": \"bargauge\"\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\":
+    \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"color\":
+    {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n          \"custom\":
+    {\r\n            \"axisCenteredZero\": false,\r\n            \"axisColorMode\":
+    \"text\",\r\n            \"axisLabel\": \"\",\r\n            \"axisPlacement\":
+    \"auto\",\r\n            \"barAlignment\": 0,\r\n            \"drawStyle\": \"line\",\r\n
+    \           \"fillOpacity\": 25,\r\n            \"gradientMode\": \"none\",\r\n
+    \           \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            },\r\n            \"lineInterpolation\":
+    \"linear\",\r\n            \"lineWidth\": 1,\r\n            \"pointSize\": 5,\r\n
+    \           \"scaleDistribution\": {\r\n              \"type\": \"linear\"\r\n            },\r\n
+    \           \"showPoints\": \"auto\",\r\n            \"spanNulls\": false,\r\n            \"stacking\":
+    {\r\n              \"group\": \"A\",\r\n              \"mode\": \"normal\"\r\n            },\r\n
+    \           \"thresholdsStyle\": {\r\n              \"mode\": \"off\"\r\n            }\r\n
+    \         },\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"red\",\r\n                \"value\": 80\r\n              }\r\n
+    \           ]\r\n          }\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n        \"x\":
+    21,\r\n        \"y\": 0\r\n      },\r\n      \"id\": 61,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"legend\": {\r\n
+    \         \"calcs\": [],\r\n          \"displayMode\": \"hidden\",\r\n          \"placement\":
+    \"right\",\r\n          \"showLegend\": false\r\n        },\r\n        \"tooltip\":
+    {\r\n          \"mode\": \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n
+    \     },\r\n      \"pluginVersion\": \"10.3.1\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\": \"code\",\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"minio_node_file_descriptor_open_total{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"hide\": false,\r\n          \"instant\":
+    false,\r\n          \"interval\": \"\",\r\n          \"intervalFactor\": 1,\r\n
+    \         \"legendFormat\": \"{{server}}\",\r\n          \"metric\": \"process_start_time_seconds\",\r\n
+    \         \"refId\": \"A\",\r\n          \"step\": 60\r\n        }\r\n      ],\r\n
+    \     \"title\": \"Open FDs \",\r\n      \"type\": \"timeseries\"\r\n    },\r\n
+    \   {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"\",\r\n      \"fieldConfig\":
+    {\r\n        \"defaults\": {\r\n          \"mappings\": [\r\n            {\r\n              \"options\":
+    {\r\n                \"match\": \"null\",\r\n                \"result\": {\r\n                  \"text\":
+    \"N/A\"\r\n                }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"bytes\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n
+    \       \"x\": 3,\r\n        \"y\": 3\r\n      },\r\n      \"id\": 64,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"last\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"sum by (instance)
+    (minio_s3_traffic_sent_bytes{job=~\\\"$scrape_jobs\\\"})\",\r\n          \"format\":
+    \"table\",\r\n          \"hide\": false,\r\n          \"instant\": false,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"\",\r\n
+    \         \"metric\": \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Total S3 Egress\",\r\n
+    \     \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\":
+    \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"color\":
+    {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n          \"custom\":
+    {\r\n            \"axisCenteredZero\": false,\r\n            \"axisColorMode\":
+    \"text\",\r\n            \"axisLabel\": \"\",\r\n            \"axisPlacement\":
+    \"auto\",\r\n            \"barAlignment\": 0,\r\n            \"drawStyle\": \"line\",\r\n
+    \           \"fillOpacity\": 25,\r\n            \"gradientMode\": \"none\",\r\n
+    \           \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            },\r\n            \"lineInterpolation\":
+    \"linear\",\r\n            \"lineWidth\": 1,\r\n            \"pointSize\": 5,\r\n
+    \           \"scaleDistribution\": {\r\n              \"type\": \"linear\"\r\n            },\r\n
+    \           \"showPoints\": \"auto\",\r\n            \"spanNulls\": false,\r\n            \"stacking\":
+    {\r\n              \"group\": \"A\",\r\n              \"mode\": \"normal\"\r\n            },\r\n
+    \           \"thresholdsStyle\": {\r\n              \"mode\": \"off\"\r\n            }\r\n
+    \         },\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"red\",\r\n                \"value\": 80\r\n              }\r\n
+    \           ]\r\n          }\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n        \"x\":
+    21,\r\n        \"y\": 3\r\n      },\r\n      \"id\": 62,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"legend\": {\r\n
+    \         \"calcs\": [],\r\n          \"displayMode\": \"hidden\",\r\n          \"placement\":
+    \"right\",\r\n          \"showLegend\": false\r\n        },\r\n        \"tooltip\":
+    {\r\n          \"mode\": \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n
+    \     },\r\n      \"pluginVersion\": \"10.3.1\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\": \"code\",\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"minio_node_go_routine_total{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"hide\": false,\r\n          \"instant\":
+    false,\r\n          \"interval\": \"\",\r\n          \"intervalFactor\": 1,\r\n
+    \         \"legendFormat\": \"{{server}}\",\r\n          \"metric\": \"process_start_time_seconds\",\r\n
+    \         \"refId\": \"A\",\r\n          \"step\": 60\r\n        }\r\n      ],\r\n
+    \     \"title\": \"Goroutines\",\r\n      \"type\": \"timeseries\"\r\n    },\r\n
+    \   {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"bool_on_off\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 2,\r\n        \"w\": 3,\r\n
+    \       \"x\": 0,\r\n        \"y\": 6\r\n      },\r\n      \"id\": 94,\r\n      \"options\":
+    {\r\n        \"colorMode\": \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\":
+    \"auto\",\r\n        \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n
+    \         \"calcs\": [\r\n            \"lastNotNull\"\r\n          ],\r\n          \"fields\":
+    \"\",\r\n          \"values\": false\r\n        },\r\n        \"showPercentChange\":
+    false,\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"disableTextWrap\": false,\r\n          \"editorMode\":
+    \"code\",\r\n          \"exemplar\": true,\r\n          \"expr\": \"minio_cluster_health_status{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"includeNullMetadata\": true,\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"Pool: {{pool}} Set:
+    {{set}}\",\r\n          \"range\": true,\r\n          \"refId\": \"A\",\r\n          \"useBackend\":
+    false\r\n        }\r\n      ],\r\n      \"title\": \"Cluster Health Status\",\r\n
+    \     \"transformations\": [],\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"\",\r\n      \"fieldConfig\":
+    {\r\n        \"defaults\": {\r\n          \"mappings\": [],\r\n          \"thresholds\":
+    {\r\n            \"mode\": \"percentage\",\r\n            \"steps\": [\r\n              {\r\n
+    \               \"color\": \"green\",\r\n                \"value\": null\r\n              }\r\n
+    \           ]\r\n          }\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 4,\r\n        \"w\": 3,\r\n        \"x\":
+    3,\r\n        \"y\": 6\r\n      },\r\n      \"id\": 78,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"minVizHeight\":
+    75,\r\n        \"minVizWidth\": 75,\r\n        \"orientation\": \"auto\",\r\n        \"reduceOptions\":
+    {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n          ],\r\n          \"fields\":
+    \"\",\r\n          \"values\": false\r\n        },\r\n        \"showThresholdLabels\":
+    false,\r\n        \"showThresholdMarkers\": true,\r\n        \"sizing\": \"auto\"\r\n
+    \     },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\": \"code\",\r\n
+    \         \"exemplar\": false,\r\n          \"expr\": \"max(minio_cluster_drive_online_total{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"hide\": false,\r\n          \"instant\":
+    true,\r\n          \"interval\": \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\":
+    \".\",\r\n          \"metric\": \"process_start_time_seconds\",\r\n          \"range\":
+    false,\r\n          \"refId\": \"A\",\r\n          \"step\": 60\r\n        },\r\n
+    \       {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\":
+    \"code\",\r\n          \"exemplar\": false,\r\n          \"expr\": \"max(minio_cluster_drive_offline_total{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"hide\": false,\r\n          \"instant\":
+    true,\r\n          \"legendFormat\": \".\",\r\n          \"range\": false,\r\n          \"refId\":
+    \"B\"\r\n        }\r\n      ],\r\n      \"title\": \"Total Online/Offline Drives\",\r\n
+    \     \"type\": \"gauge\"\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\":
+    {\r\n        \"defaults\": {\r\n          \"mappings\": [\r\n            {\r\n              \"options\":
+    {\r\n                \"match\": \"null\",\r\n                \"result\": {\r\n                  \"text\":
+    \"N/A\"\r\n                }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"dark-yellow\",\r\n                \"value\": 75000000\r\n
+    \             },\r\n              {\r\n                \"color\": \"dark-red\",\r\n
+    \               \"value\": 100000000\r\n              }\r\n            ]\r\n          },\r\n
+    \         \"unit\": \"short\"\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n        \"x\":
+    6,\r\n        \"y\": 6\r\n      },\r\n      \"id\": 66,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"horizontal\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"lastNotNull\"\r\n          ],\r\n          \"fields\": \"\",\r\n
+    \         \"values\": false\r\n        },\r\n        \"showPercentChange\": false,\r\n
+    \       \"text\": {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\":
+    true\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n
+    \       {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\":
+    \"code\",\r\n          \"exemplar\": true,\r\n          \"expr\": \"max(minio_cluster_bucket_total{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": false,\r\n          \"interval\":
+    \"1m\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"title\": \"Number
+    of Buckets\",\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"color\":
+    {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n          \"custom\":
+    {\r\n            \"axisCenteredZero\": false,\r\n            \"axisColorMode\":
+    \"text\",\r\n            \"axisLabel\": \"\",\r\n            \"axisPlacement\":
+    \"auto\",\r\n            \"barAlignment\": 0,\r\n            \"drawStyle\": \"line\",\r\n
+    \           \"fillOpacity\": 25,\r\n            \"gradientMode\": \"none\",\r\n
+    \           \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            },\r\n            \"lineInterpolation\":
+    \"linear\",\r\n            \"lineWidth\": 1,\r\n            \"pointSize\": 5,\r\n
+    \           \"scaleDistribution\": {\r\n              \"type\": \"linear\"\r\n            },\r\n
+    \           \"showPoints\": \"auto\",\r\n            \"spanNulls\": false,\r\n            \"stacking\":
+    {\r\n              \"group\": \"A\",\r\n              \"mode\": \"normal\"\r\n            },\r\n
+    \           \"thresholdsStyle\": {\r\n              \"mode\": \"off\"\r\n            }\r\n
+    \         },\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"red\",\r\n                \"value\": 80\r\n              }\r\n
+    \           ]\r\n          },\r\n          \"unit\": \"binBps\"\r\n        },\r\n
+    \       \"overrides\": []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\":
+    6,\r\n        \"w\": 7,\r\n        \"x\": 9,\r\n        \"y\": 6\r\n      },\r\n
+    \     \"id\": 63,\r\n      \"options\": {\r\n        \"legend\": {\r\n          \"calcs\":
+    [],\r\n          \"displayMode\": \"hidden\",\r\n          \"placement\": \"right\",\r\n
+    \         \"showLegend\": false\r\n        },\r\n        \"tooltip\": {\r\n          \"mode\":
+    \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n      },\r\n      \"pluginVersion\":
+    \"10.3.1\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\": {\r\n
+    \           \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"sum by (server)
+    (rate(minio_s3_traffic_received_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"Data Received [{{server}}]\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n
+    \     \"title\": \"S3 API Ingress Rate \",\r\n      \"type\": \"timeseries\"\r\n
+    \   },\r\n    {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\": {\r\n
+    \       \"defaults\": {\r\n          \"color\": {\r\n            \"mode\": \"palette-classic\"\r\n
+    \         },\r\n          \"custom\": {\r\n            \"axisCenteredZero\": false,\r\n
+    \           \"axisColorMode\": \"text\",\r\n            \"axisLabel\": \"\",\r\n
+    \           \"axisPlacement\": \"auto\",\r\n            \"barAlignment\": 0,\r\n
+    \           \"drawStyle\": \"line\",\r\n            \"fillOpacity\": 25,\r\n            \"gradientMode\":
+    \"none\",\r\n            \"hideFrom\": {\r\n              \"legend\": false,\r\n
+    \             \"tooltip\": false,\r\n              \"viz\": false\r\n            },\r\n
+    \           \"lineInterpolation\": \"linear\",\r\n            \"lineWidth\": 1,\r\n
+    \           \"pointSize\": 5,\r\n            \"scaleDistribution\": {\r\n              \"type\":
+    \"linear\"\r\n            },\r\n            \"showPoints\": \"auto\",\r\n            \"spanNulls\":
+    false,\r\n            \"stacking\": {\r\n              \"group\": \"A\",\r\n              \"mode\":
+    \"normal\"\r\n            },\r\n            \"thresholdsStyle\": {\r\n              \"mode\":
+    \"off\"\r\n            }\r\n          },\r\n          \"mappings\": [],\r\n          \"thresholds\":
+    {\r\n            \"mode\": \"absolute\",\r\n            \"steps\": [\r\n              {\r\n
+    \               \"color\": \"green\",\r\n                \"value\": null\r\n              },\r\n
+    \             {\r\n                \"color\": \"red\",\r\n                \"value\":
+    80\r\n              }\r\n            ]\r\n          },\r\n          \"unit\": \"binBps\"\r\n
+    \       },\r\n        \"overrides\": []\r\n      },\r\n      \"gridPos\": {\r\n
+    \       \"h\": 6,\r\n        \"w\": 8,\r\n        \"x\": 16,\r\n        \"y\": 6\r\n
+    \     },\r\n      \"id\": 70,\r\n      \"options\": {\r\n        \"legend\": {\r\n
+    \         \"calcs\": [],\r\n          \"displayMode\": \"hidden\",\r\n          \"placement\":
+    \"right\",\r\n          \"showLegend\": false\r\n        },\r\n        \"tooltip\":
+    {\r\n          \"mode\": \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n
+    \     },\r\n      \"pluginVersion\": \"10.3.1\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"sum by (server) (rate(minio_s3_traffic_sent_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"Data Sent [{{server}}]\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n
+    \     \"title\": \"S3 API Egress Rate \",\r\n      \"type\": \"timeseries\"\r\n
+    \   },\r\n    {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"\",\r\n
+    \     \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"mappings\": [\r\n
+    \           {\r\n              \"options\": {\r\n                \"match\": \"null\",\r\n
+    \               \"result\": {\r\n                  \"text\": \"N/A\"\r\n                }\r\n
+    \             },\r\n              \"type\": \"special\"\r\n            }\r\n          ],\r\n
+    \         \"thresholds\": {\r\n            \"mode\": \"absolute\",\r\n            \"steps\":
+    [\r\n              {\r\n                \"color\": \"green\",\r\n                \"value\":
+    null\r\n              },\r\n              {\r\n                \"color\": \"red\",\r\n
+    \               \"value\": 80\r\n              }\r\n            ]\r\n          },\r\n
+    \         \"unit\": \"short\"\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 2,\r\n        \"w\": 3,\r\n        \"x\":
+    0,\r\n        \"y\": 8\r\n      },\r\n      \"id\": 53,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"mean\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"max(minio_cluster_nodes_online_total{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"table\",\r\n          \"hide\": false,\r\n          \"instant\":
+    true,\r\n          \"interval\": \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\":
+    \"\",\r\n          \"metric\": \"process_start_time_seconds\",\r\n          \"refId\":
+    \"A\",\r\n          \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Total
+    Online Servers\",\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"mappings\":
+    [\r\n            {\r\n              \"options\": {\r\n                \"match\":
+    \"null\",\r\n                \"result\": {\r\n                  \"text\": \"N/A\"\r\n
+    \               }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"dark-yellow\",\r\n                \"value\": 75000000\r\n
+    \             },\r\n              {\r\n                \"color\": \"dark-red\",\r\n
+    \               \"value\": 100000000\r\n              }\r\n            ]\r\n          },\r\n
+    \         \"unit\": \"short\"\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 3,\r\n        \"w\": 3,\r\n        \"x\":
+    6,\r\n        \"y\": 9\r\n      },\r\n      \"id\": 44,\r\n      \"links\": [],\r\n
+    \     \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"area\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"horizontal\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"lastNotNull\"\r\n          ],\r\n          \"fields\": \"\",\r\n
+    \         \"values\": false\r\n        },\r\n        \"showPercentChange\": false,\r\n
+    \       \"text\": {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\":
+    true\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n
+    \       {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\":
+    \"code\",\r\n          \"exemplar\": true,\r\n          \"expr\": \"max(minio_cluster_usage_object_total{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": false,\r\n          \"interval\":
+    \"1m\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"title\": \"Number
+    of Objects\",\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"description\": \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"color\": {\r\n            \"mode\": \"thresholds\"\r\n          },\r\n
+    \         \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"ns\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 2,\r\n        \"w\": 3,\r\n
+    \       \"x\": 0,\r\n        \"y\": 10\r\n      },\r\n      \"id\": 80,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"none\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"last\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"max(minio_heal_time_last_activity_nano_seconds{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": true,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"\",\r\n
+    \         \"metric\": \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Time Since
+    Last Heal\",\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"description\": \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"color\": {\r\n            \"mode\": \"thresholds\"\r\n          },\r\n
+    \         \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"ns\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 2,\r\n        \"w\": 3,\r\n
+    \       \"x\": 3,\r\n        \"y\": 10\r\n      },\r\n      \"id\": 81,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"none\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"last\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"max(minio_usage_last_activity_nano_seconds{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": true,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"\",\r\n
+    \         \"metric\": \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"Time Since
+    Last Scan\",\r\n      \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"aliasColors\":
+    {\r\n        \"S3 Errors\": \"light-red\",\r\n        \"S3 Requests\": \"light-green\"\r\n
+    \     },\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n      \"dashes\":
+    false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 6,\r\n        \"w\": 9,\r\n        \"x\":
+    0,\r\n        \"y\": 12\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    60,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"sum by (server,api) (increase(minio_s3_requests_total{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"{{server,api}}\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\":
+    [],\r\n      \"timeRegions\": [],\r\n      \"title\": \"S3 API Request Rate\",\r\n
+    \     \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:331\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    true\r\n        },\r\n        {\r\n          \"$$hashKey\": \"object:332\",\r\n
+    \         \"format\": \"short\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    false\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\": false\r\n
+    \     }\r\n    },\r\n    {\r\n      \"aliasColors\": {\r\n        \"S3 Errors\":
+    \"light-red\",\r\n        \"S3 Requests\": \"light-green\"\r\n      },\r\n      \"bars\":
+    false,\r\n      \"dashLength\": 10,\r\n      \"dashes\": false,\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"fill\": 1,\r\n      \"fillGradient\": 0,\r\n      \"gridPos\":
+    {\r\n        \"h\": 6,\r\n        \"w\": 7,\r\n        \"x\": 9,\r\n        \"y\":
+    12\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\": 88,\r\n      \"legend\":
+    {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n        \"max\":
+    false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n        \"total\":
+    false,\r\n        \"values\": false\r\n      },\r\n      \"lines\": true,\r\n      \"linewidth\":
+    1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\": {\r\n        \"alertThreshold\":
+    true\r\n      },\r\n      \"percentage\": false,\r\n      \"pluginVersion\": \"9.1.5\",\r\n
+    \     \"pointradius\": 2,\r\n      \"points\": false,\r\n      \"renderer\": \"flot\",\r\n
+    \     \"seriesOverrides\": [],\r\n      \"spaceLength\": 10,\r\n      \"stack\":
+    false,\r\n      \"steppedLine\": false,\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"sum by (server,api) (increase(minio_s3_requests_4xx_errors_total{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"{{server,api}}\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\":
+    [],\r\n      \"timeRegions\": [],\r\n      \"title\": \"S3 API Request Error Rate
+    (4xx)\",\r\n      \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\":
+    0,\r\n        \"value_type\": \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n
+    \     \"xaxis\": {\r\n        \"mode\": \"time\",\r\n        \"show\": true,\r\n
+    \       \"values\": []\r\n      },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\":
+    \"object:331\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:332\",\r\n          \"format\": \"short\",\r\n          \"logBase\": 1,\r\n
+    \         \"show\": false\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\":
+    false\r\n      }\r\n    },\r\n    {\r\n      \"aliasColors\": {\r\n        \"S3
+    Errors\": \"light-red\",\r\n        \"S3 Requests\": \"light-green\"\r\n      },\r\n
+    \     \"bars\": false,\r\n      \"dashLength\": 10,\r\n      \"dashes\": false,\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 6,\r\n        \"w\": 8,\r\n        \"x\":
+    16,\r\n        \"y\": 12\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    86,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"sum by (server,api) (increase(minio_s3_requests_5xx_errors_total{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"{{server,api}}\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\":
+    [],\r\n      \"timeRegions\": [],\r\n      \"title\": \"S3 API Request Error Rate
+    (5xx)\",\r\n      \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\":
+    0,\r\n        \"value_type\": \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n
+    \     \"xaxis\": {\r\n        \"mode\": \"time\",\r\n        \"show\": true,\r\n
+    \       \"values\": []\r\n      },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\":
+    \"object:331\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:332\",\r\n          \"format\": \"short\",\r\n          \"logBase\": 1,\r\n
+    \         \"show\": false\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\":
+    false\r\n      }\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\":
+    {\r\n        \"defaults\": {\r\n          \"color\": {\r\n            \"mode\":
+    \"fixed\"\r\n          },\r\n          \"mappings\": [],\r\n          \"thresholds\":
+    {\r\n            \"mode\": \"absolute\",\r\n            \"steps\": [\r\n              {\r\n
+    \               \"color\": \"green\",\r\n                \"value\": null\r\n              }\r\n
+    \           ]\r\n          }\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 8,\r\n        \"w\": 12,\r\n        \"x\":
+    0,\r\n        \"y\": 18\r\n      },\r\n      \"id\": 99,\r\n      \"options\": {\r\n
+    \       \"displayMode\": \"lcd\",\r\n        \"maxVizHeight\": 300,\r\n        \"minVizHeight\":
+    16,\r\n        \"minVizWidth\": 8,\r\n        \"namePlacement\": \"auto\",\r\n        \"orientation\":
+    \"horizontal\",\r\n        \"reduceOptions\": {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n
+    \         ],\r\n          \"fields\": \"\",\r\n          \"values\": false\r\n        },\r\n
+    \       \"showUnfilled\": true,\r\n        \"sizing\": \"auto\",\r\n        \"valueMode\":
+    \"color\"\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"disableTextWrap\":
+    false,\r\n          \"editorMode\": \"builder\",\r\n          \"expr\": \"minio_cluster_health_erasure_set_online_drives{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"hide\": false,\r\n          \"includeNullMetadata\":
+    true,\r\n          \"instant\": false,\r\n          \"legendFormat\": \"Pool {{pool}}
+    / Set {{set}} - Online Drives\",\r\n          \"range\": true,\r\n          \"refId\":
+    \"A\",\r\n          \"useBackend\": false\r\n        },\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"disableTextWrap\": false,\r\n          \"editorMode\":
+    \"builder\",\r\n          \"expr\": \"minio_cluster_health_erasure_set_read_quorum{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"hide\": false,\r\n          \"includeNullMetadata\":
+    true,\r\n          \"instant\": false,\r\n          \"legendFormat\": \"Pool {{pool}}
+    / Set {{set}} - Read Quorum\",\r\n          \"range\": true,\r\n          \"refId\":
+    \"B\",\r\n          \"useBackend\": false\r\n        },\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"disableTextWrap\": false,\r\n          \"editorMode\":
+    \"builder\",\r\n          \"expr\": \"minio_cluster_health_erasure_set_write_quorum{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"hide\": false,\r\n          \"includeNullMetadata\":
+    true,\r\n          \"instant\": false,\r\n          \"legendFormat\": \"Pool {{pool}}
+    / Set {{set}} - Write Quorum\",\r\n          \"range\": true,\r\n          \"refId\":
+    \"C\",\r\n          \"useBackend\": false\r\n        },\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"disableTextWrap\": false,\r\n          \"editorMode\":
+    \"builder\",\r\n          \"expr\": \"minio_cluster_health_erasure_set_healing_drives{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"hide\": false,\r\n          \"includeNullMetadata\":
+    true,\r\n          \"instant\": false,\r\n          \"legendFormat\": \"Pool {{pool}}
+    / Set {{set}} - Healing Drives\",\r\n          \"range\": true,\r\n          \"refId\":
+    \"D\",\r\n          \"useBackend\": false\r\n        },\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"disableTextWrap\": false,\r\n          \"editorMode\":
+    \"builder\",\r\n          \"expr\": \"minio_cluster_health_erasure_set_status{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"fullMetaSearch\": false,\r\n          \"hide\": false,\r\n          \"includeNullMetadata\":
+    true,\r\n          \"instant\": false,\r\n          \"legendFormat\": \"Pool {{pool}}
+    / Set {{set}} - Status\",\r\n          \"range\": true,\r\n          \"refId\":
+    \"E\",\r\n          \"useBackend\": false\r\n        }\r\n      ],\r\n      \"title\":
+    \"Health Breakdown\",\r\n      \"type\": \"bargauge\"\r\n    },\r\n    {\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"color\":
+    {\r\n            \"mode\": \"continuous-GrYlRd\"\r\n          },\r\n          \"mappings\":
+    [],\r\n          \"thresholds\": {\r\n            \"mode\": \"absolute\",\r\n            \"steps\":
+    [\r\n              {\r\n                \"color\": \"green\",\r\n                \"value\":
+    null\r\n              },\r\n              {\r\n                \"color\": \"red\",\r\n
+    \               \"value\": 80\r\n              }\r\n            ]\r\n          },\r\n
+    \         \"unit\": \"bytes\"\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 8,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 18\r\n      },\r\n      \"id\": 76,\r\n      \"options\":
+    {\r\n        \"displayMode\": \"lcd\",\r\n        \"maxVizHeight\": 300,\r\n        \"minVizHeight\":
+    16,\r\n        \"minVizWidth\": 8,\r\n        \"namePlacement\": \"auto\",\r\n        \"orientation\":
+    \"horizontal\",\r\n        \"reduceOptions\": {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n
+    \         ],\r\n          \"fields\": \"\",\r\n          \"values\": false\r\n        },\r\n
+    \       \"showUnfilled\": true,\r\n        \"sizing\": \"auto\",\r\n        \"valueMode\":
+    \"color\"\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\":
+    \"code\",\r\n          \"exemplar\": false,\r\n          \"expr\": \"minio_node_process_resident_memory_bytes{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": false,\r\n          \"interval\":
+    \"\",\r\n          \"legendFormat\": \"{{server}}\",\r\n          \"range\": true,\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"title\": \"Memory
+    Usage \",\r\n      \"type\": \"bargauge\"\r\n    },\r\n    {\r\n      \"aliasColors\":
+    {},\r\n      \"bars\": true,\r\n      \"dashLength\": 10,\r\n      \"dashes\": false,\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    0,\r\n        \"y\": 26\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    73,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_io_rchar_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": false,\r\n          \"interval\":
+    \"\",\r\n          \"legendFormat\": \"Node RChar [{{server}}]\",\r\n          \"refId\":
+    \"A\"\r\n        },\r\n        {\r\n          \"datasource\": {\r\n            \"type\":
+    \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"rate(minio_node_io_wchar_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"Node WChar [{{server}}]\",\r\n
+    \         \"refId\": \"B\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Read, Write I/O\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:381\",\r\n
+    \         \"format\": \"bytes\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    true\r\n        },\r\n        {\r\n          \"$$hashKey\": \"object:382\",\r\n
+    \         \"format\": \"short\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    true\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\": false\r\n
+    \     }\r\n    },\r\n    {\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fieldConfig\": {\r\n
+    \       \"defaults\": {\r\n          \"mappings\": [],\r\n          \"thresholds\":
+    {\r\n            \"mode\": \"percentage\",\r\n            \"steps\": [\r\n              {\r\n
+    \               \"color\": \"green\",\r\n                \"value\": null\r\n              },\r\n
+    \             {\r\n                \"color\": \"orange\",\r\n                \"value\":
+    70\r\n              },\r\n              {\r\n                \"color\": \"red\",\r\n
+    \               \"value\": 85\r\n              }\r\n            ]\r\n          },\r\n
+    \         \"unit\": \"s\"\r\n        },\r\n        \"overrides\": []\r\n      },\r\n
+    \     \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 26\r\n      },\r\n      \"id\": 77,\r\n      \"options\":
+    {\r\n        \"minVizHeight\": 75,\r\n        \"minVizWidth\": 75,\r\n        \"orientation\":
+    \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\": [\r\n            \"lastNotNull\"\r\n
+    \         ],\r\n          \"fields\": \"\",\r\n          \"values\": false\r\n        },\r\n
+    \       \"showThresholdLabels\": false,\r\n        \"showThresholdMarkers\": true,\r\n
+    \       \"sizing\": \"auto\"\r\n      },\r\n      \"pluginVersion\": \"9.1.5\",\r\n
+    \     \"targets\": [\r\n        {\r\n          \"datasource\": {\r\n            \"type\":
+    \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n
+    \         \"editorMode\": \"code\",\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"rate(minio_node_process_cpu_total_seconds{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"{{server}}\",\r\n
+    \         \"range\": true,\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n
+    \     \"title\": \"CPU Usage\",\r\n      \"type\": \"gauge\"\r\n    },\r\n    {\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"Total number of bytes
+    received and sent on MinIO cluster\",\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"color\": {\r\n            \"mode\": \"palette-classic\"\r\n          },\r\n
+    \         \"custom\": {\r\n            \"axisCenteredZero\": false,\r\n            \"axisColorMode\":
+    \"text\",\r\n            \"axisLabel\": \"\",\r\n            \"axisPlacement\":
+    \"auto\",\r\n            \"barAlignment\": 0,\r\n            \"drawStyle\": \"line\",\r\n
+    \           \"fillOpacity\": 25,\r\n            \"gradientMode\": \"none\",\r\n
+    \           \"hideFrom\": {\r\n              \"legend\": false,\r\n              \"tooltip\":
+    false,\r\n              \"viz\": false\r\n            },\r\n            \"lineInterpolation\":
+    \"linear\",\r\n            \"lineWidth\": 1,\r\n            \"pointSize\": 5,\r\n
+    \           \"scaleDistribution\": {\r\n              \"type\": \"linear\"\r\n            },\r\n
+    \           \"showPoints\": \"auto\",\r\n            \"spanNulls\": false,\r\n            \"stacking\":
+    {\r\n              \"group\": \"A\",\r\n              \"mode\": \"normal\"\r\n            },\r\n
+    \           \"thresholdsStyle\": {\r\n              \"mode\": \"off\"\r\n            }\r\n
+    \         },\r\n          \"mappings\": [],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"absolute\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              },\r\n              {\r\n
+    \               \"color\": \"red\",\r\n                \"value\": 80\r\n              }\r\n
+    \           ]\r\n          },\r\n          \"unit\": \"bytes\"\r\n        },\r\n
+    \       \"overrides\": []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\":
+    7,\r\n        \"w\": 12,\r\n        \"x\": 0,\r\n        \"y\": 33\r\n      },\r\n
+    \     \"id\": 17,\r\n      \"links\": [],\r\n      \"options\": {\r\n        \"legend\":
+    {\r\n          \"calcs\": [],\r\n          \"displayMode\": \"hidden\",\r\n          \"placement\":
+    \"right\",\r\n          \"showLegend\": false\r\n        },\r\n        \"tooltip\":
+    {\r\n          \"mode\": \"single\",\r\n          \"sort\": \"none\"\r\n        }\r\n
+    \     },\r\n      \"pluginVersion\": \"10.3.1\",\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"editorMode\": \"code\",\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"rate(minio_inter_node_traffic_sent_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"interval\": \"\",\r\n          \"intervalFactor\":
+    2,\r\n          \"legendFormat\": \"Internode Bytes Received [{{server}}]\",\r\n
+    \         \"metric\": \"minio_http_requests_duration_seconds_count\",\r\n          \"range\":
+    true,\r\n          \"refId\": \"A\",\r\n          \"step\": 4\r\n        },\r\n
+    \       {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_inter_node_traffic_received_bytes{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"Internode Bytes Sent
+    [{{server}}]\",\r\n          \"refId\": \"B\"\r\n        }\r\n      ],\r\n      \"title\":
+    \"Internode Traffic\",\r\n      \"type\": \"timeseries\"\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {\r\n        \"available 10.13.1.25:9000\": \"green\",\r\n
+    \       \"used 10.13.1.25:9000\": \"blue\"\r\n      },\r\n      \"bars\": false,\r\n
+    \     \"dashLength\": 10,\r\n      \"dashes\": false,\r\n      \"datasource\": {\r\n
+    \       \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n
+    \     \"description\": \"\",\r\n      \"fieldConfig\": {\r\n        \"defaults\":
+    {\r\n          \"links\": [],\r\n          \"unit\": \"bytes\"\r\n        },\r\n
+    \       \"overrides\": []\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 33\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    8,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"rightSide\": false,\r\n
+    \       \"show\": true,\r\n        \"total\": false,\r\n        \"values\": false\r\n
+    \     },\r\n      \"lines\": true,\r\n      \"linewidth\": 1,\r\n      \"links\":
+    [],\r\n      \"nullPointMode\": \"null\",\r\n      \"options\": {\r\n        \"alertThreshold\":
+    true\r\n      },\r\n      \"percentage\": false,\r\n      \"pluginVersion\": \"9.1.5\",\r\n
+    \     \"pointradius\": 2,\r\n      \"points\": false,\r\n      \"renderer\": \"flot\",\r\n
+    \     \"seriesOverrides\": [],\r\n      \"spaceLength\": 10,\r\n      \"stack\":
+    false,\r\n      \"steppedLine\": false,\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"minio_node_file_descriptor_open_total{job=~\\\"$scrape_jobs\\\"}\",\r\n          \"interval\":
+    \"\",\r\n          \"legendFormat\": \"Open FDs [{{server}}]\",\r\n          \"refId\":
+    \"B\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n      \"timeRegions\":
+    [],\r\n      \"title\": \"File Descriptors\",\r\n      \"tooltip\": {\r\n        \"shared\":
+    true,\r\n        \"sort\": 0,\r\n        \"value_type\": \"individual\"\r\n      },\r\n
+    \     \"type\": \"graph\",\r\n      \"xaxis\": {\r\n        \"mode\": \"time\",\r\n
+    \       \"show\": true,\r\n        \"values\": []\r\n      },\r\n      \"yaxes\":
+    [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n          \"format\":
+    \"bytes\",\r\n          \"logBase\": 1,\r\n          \"min\": \"0\",\r\n          \"show\":
+    true\r\n        },\r\n        {\r\n          \"$$hashKey\": \"object:213\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n      \"yaxis\":
+    {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n      \"aliasColors\":
+    {\r\n        \"Offline 10.13.1.25:9000\": \"dark-red\",\r\n        \"Total 10.13.1.25:9000\":
+    \"blue\"\r\n      },\r\n      \"bars\": true,\r\n      \"dashLength\": 10,\r\n      \"dashes\":
+    false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"Number of online drives
+    per MinIO Server\",\r\n      \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"links\":
+    []\r\n        },\r\n        \"overrides\": []\r\n      },\r\n      \"fill\": 1,\r\n
+    \     \"fillGradient\": 0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\":
+    12,\r\n        \"x\": 0,\r\n        \"y\": 40\r\n      },\r\n      \"hiddenSeries\":
+    false,\r\n      \"id\": 11,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n
+    \       \"current\": false,\r\n        \"max\": false,\r\n        \"min\": false,\r\n
+    \       \"rightSide\": false,\r\n        \"show\": true,\r\n        \"total\": false,\r\n
+    \       \"values\": false\r\n      },\r\n      \"lines\": false,\r\n      \"linewidth\":
+    1,\r\n      \"links\": [],\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_syscall_read_total{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"interval\": \"\",\r\n          \"intervalFactor\":
+    2,\r\n          \"legendFormat\": \"Read Syscalls [{{server}}]\",\r\n          \"metric\":
+    \"process_start_time_seconds\",\r\n          \"refId\": \"A\",\r\n          \"step\":
+    60\r\n        },\r\n        {\r\n          \"datasource\": {\r\n            \"type\":
+    \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"rate(minio_node_syscall_write_total{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"\",\r\n          \"legendFormat\": \"Write Syscalls [{{server}}]\",\r\n
+    \         \"refId\": \"B\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Syscalls\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:185\",\r\n
+    \         \"decimals\": 0,\r\n          \"format\": \"short\",\r\n          \"logBase\":
+    1,\r\n          \"min\": \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n
+    \         \"$$hashKey\": \"object:186\",\r\n          \"format\": \"short\",\r\n
+    \         \"logBase\": 1,\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {},\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n
+    \     \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 40\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    95,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_scanner_objects_scanned{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"[{{server}}]\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Scanned Objects\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {},\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n
+    \     \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    0,\r\n        \"y\": 47\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    75,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_scanner_versions_scanned{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"[{{server}}]\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Scanned Versions\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {},\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n
+    \     \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 47\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    96,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_scanner_directories_scanned{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"[{{server}}]\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Scanned Directories\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"description\": \"\",\r\n      \"fieldConfig\":
+    {\r\n        \"defaults\": {\r\n          \"mappings\": [\r\n            {\r\n              \"options\":
+    {\r\n                \"match\": \"null\",\r\n                \"result\": {\r\n                  \"text\":
+    \"N/A\"\r\n                }\r\n              },\r\n              \"type\": \"special\"\r\n
+    \           }\r\n          ],\r\n          \"thresholds\": {\r\n            \"mode\":
+    \"percentage\",\r\n            \"steps\": [\r\n              {\r\n                \"color\":
+    \"green\",\r\n                \"value\": null\r\n              }\r\n            ]\r\n
+    \         },\r\n          \"unit\": \"dtdurations\"\r\n        },\r\n        \"overrides\":
+    []\r\n      },\r\n      \"gridPos\": {\r\n        \"h\": 4,\r\n        \"w\": 4,\r\n
+    \       \"x\": 0,\r\n        \"y\": 54\r\n      },\r\n      \"id\": 89,\r\n      \"links\":
+    [],\r\n      \"maxDataPoints\": 100,\r\n      \"options\": {\r\n        \"colorMode\":
+    \"value\",\r\n        \"graphMode\": \"none\",\r\n        \"justifyMode\": \"auto\",\r\n
+    \       \"orientation\": \"auto\",\r\n        \"reduceOptions\": {\r\n          \"calcs\":
+    [\r\n            \"mean\"\r\n          ],\r\n          \"fields\": \"\",\r\n          \"values\":
+    false\r\n        },\r\n        \"showPercentChange\": false,\r\n        \"text\":
+    {},\r\n        \"textMode\": \"auto\",\r\n        \"wideLayout\": true\r\n      },\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"targets\": [\r\n        {\r\n          \"datasource\":
+    {\r\n            \"type\": \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \         },\r\n          \"exemplar\": true,\r\n          \"expr\": \"minio_cluster_kms_uptime{job=~\\\"$scrape_jobs\\\"}\",\r\n
+    \         \"format\": \"time_series\",\r\n          \"instant\": true,\r\n          \"interval\":
+    \"\",\r\n          \"intervalFactor\": 1,\r\n          \"legendFormat\": \"{{instance}}\",\r\n
+    \         \"metric\": \"minio_cluster_kms_uptime\",\r\n          \"refId\": \"A\",\r\n
+    \         \"step\": 60\r\n        }\r\n      ],\r\n      \"title\": \"KMS Uptime\",\r\n
+    \     \"type\": \"stat\"\r\n    },\r\n    {\r\n      \"aliasColors\": {\r\n        \"S3
+    Errors\": \"light-red\",\r\n        \"S3 Requests\": \"light-green\"\r\n      },\r\n
+    \     \"bars\": false,\r\n      \"dashLength\": 10,\r\n      \"dashes\": false,\r\n
+    \     \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n        \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 4,\r\n        \"w\": 4,\r\n        \"x\":
+    4,\r\n        \"y\": 54\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    91,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"sum by (server) (increase(minio_cluster_kms_request_error{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"{{server}}\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\":
+    [],\r\n      \"timeRegions\": [],\r\n      \"title\": \"KMS Request 4xx Error Rate\",\r\n
+    \     \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:331\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    true\r\n        },\r\n        {\r\n          \"$$hashKey\": \"object:332\",\r\n
+    \         \"format\": \"short\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    false\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\": false\r\n
+    \     }\r\n    },\r\n    {\r\n      \"aliasColors\": {},\r\n      \"bars\": false,\r\n
+    \     \"dashLength\": 10,\r\n      \"dashes\": false,\r\n      \"datasource\": {\r\n
+    \       \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n
+    \     \"fieldConfig\": {\r\n        \"defaults\": {\r\n          \"unit\": \"bool_on_off\"\r\n
+    \       },\r\n        \"overrides\": []\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 4,\r\n        \"w\": 4,\r\n        \"x\":
+    8,\r\n        \"y\": 54\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    90,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"sum by (server) (minio_cluster_kms_online{job=~\\\"$scrape_jobs\\\"})\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"{{server}}\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"KMS Online(1)/Offline(0)\",\r\n
+    \     \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"bool_on_off\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {},\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n
+    \     \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 7,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 54\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    98,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_scanner_bucket_scans_finished{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"[{{server}}]\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Bucket Scans Finished\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {\r\n        \"S3 Errors\": \"light-red\",\r\n        \"S3
+    Requests\": \"light-green\"\r\n      },\r\n      \"bars\": false,\r\n      \"dashLength\":
+    10,\r\n      \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\":
+    \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\":
+    1,\r\n      \"fillGradient\": 0,\r\n      \"gridPos\": {\r\n        \"h\": 5,\r\n
+    \       \"w\": 6,\r\n        \"x\": 0,\r\n        \"y\": 58\r\n      },\r\n      \"hiddenSeries\":
+    false,\r\n      \"id\": 92,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n
+    \       \"current\": false,\r\n        \"max\": false,\r\n        \"min\": false,\r\n
+    \       \"show\": true,\r\n        \"total\": false,\r\n        \"values\": false\r\n
+    \     },\r\n      \"lines\": true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\":
+    \"null\",\r\n      \"options\": {\r\n        \"alertThreshold\": true\r\n      },\r\n
+    \     \"percentage\": false,\r\n      \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\":
+    2,\r\n      \"points\": false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\":
+    [],\r\n      \"spaceLength\": 10,\r\n      \"stack\": false,\r\n      \"steppedLine\":
+    false,\r\n      \"targets\": [\r\n        {\r\n          \"datasource\": {\r\n            \"type\":
+    \"prometheus\",\r\n            \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n
+    \         \"exemplar\": true,\r\n          \"expr\": \"sum by (server) (increase(minio_cluster_kms_request_failure{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"{{server}}\",\r\n          \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\":
+    [],\r\n      \"timeRegions\": [],\r\n      \"title\": \"KMS Request 5xx Error Rate\",\r\n
+    \     \"tooltip\": {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:331\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    true\r\n        },\r\n        {\r\n          \"$$hashKey\": \"object:332\",\r\n
+    \         \"format\": \"short\",\r\n          \"logBase\": 1,\r\n          \"show\":
+    false\r\n        }\r\n      ],\r\n      \"yaxis\": {\r\n        \"align\": false\r\n
+    \     }\r\n    },\r\n    {\r\n      \"aliasColors\": {\r\n        \"S3 Errors\":
+    \"light-red\",\r\n        \"S3 Requests\": \"light-green\"\r\n      },\r\n      \"bars\":
+    false,\r\n      \"dashLength\": 10,\r\n      \"dashes\": false,\r\n      \"datasource\":
+    {\r\n        \"type\": \"prometheus\",\r\n        \"uid\": \"${DS_PROMETHEUS}\"\r\n
+    \     },\r\n      \"fill\": 1,\r\n      \"fillGradient\": 0,\r\n      \"gridPos\":
+    {\r\n        \"h\": 5,\r\n        \"w\": 6,\r\n        \"x\": 6,\r\n        \"y\":
+    58\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\": 93,\r\n      \"legend\":
+    {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n        \"max\":
+    false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n        \"total\":
+    false,\r\n        \"values\": false\r\n      },\r\n      \"lines\": true,\r\n      \"linewidth\":
+    1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\": {\r\n        \"alertThreshold\":
+    true\r\n      },\r\n      \"percentage\": false,\r\n      \"pluginVersion\": \"9.1.5\",\r\n
+    \     \"pointradius\": 2,\r\n      \"points\": false,\r\n      \"renderer\": \"flot\",\r\n
+    \     \"seriesOverrides\": [],\r\n      \"spaceLength\": 10,\r\n      \"stack\":
+    false,\r\n      \"steppedLine\": false,\r\n      \"targets\": [\r\n        {\r\n
+    \         \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n            \"uid\":
+    \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\": true,\r\n          \"expr\":
+    \"sum by (server) (rate(minio_cluster_kms_request_success{job=~\\\"$scrape_jobs\\\"}[$__rate_interval]))\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"intervalFactor\": 2,\r\n          \"legendFormat\":
+    \"KMS Request Success [{{server}}]\",\r\n          \"refId\": \"A\"\r\n        }\r\n
+    \     ],\r\n      \"thresholds\": [],\r\n      \"timeRegions\": [],\r\n      \"title\":
+    \"KMS Request Success Rate \",\r\n      \"tooltip\": {\r\n        \"shared\": true,\r\n
+    \       \"sort\": 0,\r\n        \"value_type\": \"individual\"\r\n      },\r\n      \"type\":
+    \"graph\",\r\n      \"xaxis\": {\r\n        \"mode\": \"time\",\r\n        \"show\":
+    true,\r\n        \"values\": []\r\n      },\r\n      \"yaxes\": [\r\n        {\r\n
+    \         \"$$hashKey\": \"object:331\",\r\n          \"format\": \"none\",\r\n
+    \         \"logBase\": 1,\r\n          \"show\": true\r\n        },\r\n        {\r\n
+    \         \"$$hashKey\": \"object:332\",\r\n          \"format\": \"short\",\r\n
+    \         \"logBase\": 1,\r\n          \"show\": false\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    },\r\n    {\r\n
+    \     \"aliasColors\": {},\r\n      \"bars\": false,\r\n      \"dashLength\": 10,\r\n
+    \     \"dashes\": false,\r\n      \"datasource\": {\r\n        \"type\": \"prometheus\",\r\n
+    \       \"uid\": \"${DS_PROMETHEUS}\"\r\n      },\r\n      \"fill\": 1,\r\n      \"fillGradient\":
+    0,\r\n      \"gridPos\": {\r\n        \"h\": 9,\r\n        \"w\": 12,\r\n        \"x\":
+    12,\r\n        \"y\": 61\r\n      },\r\n      \"hiddenSeries\": false,\r\n      \"id\":
+    97,\r\n      \"legend\": {\r\n        \"avg\": false,\r\n        \"current\": false,\r\n
+    \       \"max\": false,\r\n        \"min\": false,\r\n        \"show\": true,\r\n
+    \       \"total\": false,\r\n        \"values\": false\r\n      },\r\n      \"lines\":
+    true,\r\n      \"linewidth\": 1,\r\n      \"nullPointMode\": \"null\",\r\n      \"options\":
+    {\r\n        \"alertThreshold\": true\r\n      },\r\n      \"percentage\": false,\r\n
+    \     \"pluginVersion\": \"9.1.5\",\r\n      \"pointradius\": 2,\r\n      \"points\":
+    false,\r\n      \"renderer\": \"flot\",\r\n      \"seriesOverrides\": [],\r\n      \"spaceLength\":
+    10,\r\n      \"stack\": false,\r\n      \"steppedLine\": false,\r\n      \"targets\":
+    [\r\n        {\r\n          \"datasource\": {\r\n            \"type\": \"prometheus\",\r\n
+    \           \"uid\": \"${DS_PROMETHEUS}\"\r\n          },\r\n          \"exemplar\":
+    true,\r\n          \"expr\": \"rate(minio_node_scanner_bucket_scans_started{job=~\\\"$scrape_jobs\\\"}[$__rate_interval])\",\r\n
+    \         \"interval\": \"1m\",\r\n          \"legendFormat\": \"[{{server}}]\",\r\n
+    \         \"refId\": \"A\"\r\n        }\r\n      ],\r\n      \"thresholds\": [],\r\n
+    \     \"timeRegions\": [],\r\n      \"title\": \"Bucket Scans Started\",\r\n      \"tooltip\":
+    {\r\n        \"shared\": true,\r\n        \"sort\": 0,\r\n        \"value_type\":
+    \"individual\"\r\n      },\r\n      \"type\": \"graph\",\r\n      \"xaxis\": {\r\n
+    \       \"mode\": \"time\",\r\n        \"show\": true,\r\n        \"values\": []\r\n
+    \     },\r\n      \"yaxes\": [\r\n        {\r\n          \"$$hashKey\": \"object:212\",\r\n
+    \         \"format\": \"none\",\r\n          \"logBase\": 1,\r\n          \"min\":
+    \"0\",\r\n          \"show\": true\r\n        },\r\n        {\r\n          \"$$hashKey\":
+    \"object:213\",\r\n          \"format\": \"none\",\r\n          \"logBase\": 1,\r\n
+    \         \"min\": \"0\",\r\n          \"show\": true\r\n        }\r\n      ],\r\n
+    \     \"yaxis\": {\r\n        \"align\": false\r\n      }\r\n    }\r\n  ],\r\n  \"refresh\":
+    \"\",\r\n  \"schemaVersion\": 37,\r\n  \"style\": \"dark\",\r\n  \"tags\": [\r\n
+    \   \"minio\"\r\n  ],\r\n  \"templating\": {\r\n    \"list\": [\r\n      {\r\n        \"current\":
+    {\r\n          \"selected\": false,\r\n          \"text\": \"All\",\r\n          \"value\":
+    \"$__all\"\r\n        },\r\n        \"datasource\": {\r\n          \"type\": \"prometheus\",\r\n
+    \         \"uid\": \"${DS_PROMETHEUS}\"\r\n        },\r\n        \"definition\":
+    \"label_values(job)\",\r\n        \"hide\": 0,\r\n        \"includeAll\": true,\r\n
+    \       \"multi\": true,\r\n        \"name\": \"scrape_jobs\",\r\n        \"options\":
+    [],\r\n        \"query\": {\r\n          \"query\": \"label_values(job)\",\r\n          \"refId\":
+    \"StandardVariableQuery\"\r\n        },\r\n        \"refresh\": 1,\r\n        \"regex\":
+    \"\",\r\n        \"skipUrlSync\": false,\r\n        \"sort\": 0,\r\n        \"type\":
+    \"query\"\r\n      },\r\n      {\r\n        \"current\": {\r\n          \"selected\":
+    false,\r\n          \"text\": \"Prometheus\",\r\n          \"value\": \"Prometheus\"\r\n
+    \       },\r\n        \"hide\": 0,\r\n        \"includeAll\": false,\r\n        \"label\":
+    \"Data Source\",\r\n        \"multi\": false,\r\n        \"name\": \"DS_PROMETHEUS\",\r\n
+    \       \"options\": [],\r\n        \"query\": \"prometheus\",\r\n        \"refresh\":
+    1,\r\n        \"regex\": \"\",\r\n        \"skipUrlSync\": false,\r\n        \"type\":
+    \"datasource\"\r\n      }\r\n    ]\r\n  },\r\n  \"time\": {\r\n    \"from\": \"now-6h\",\r\n
+    \   \"to\": \"now\"\r\n  },\r\n  \"timepicker\": {\r\n    \"refresh_intervals\":
+    [\r\n      \"10s\",\r\n      \"30s\",\r\n      \"1m\",\r\n      \"5m\",\r\n      \"15m\",\r\n
+    \     \"30m\",\r\n      \"1h\",\r\n      \"2h\",\r\n      \"1d\"\r\n    ],\r\n    \"time_options\":
+    [\r\n      \"5m\",\r\n      \"15m\",\r\n      \"1h\",\r\n      \"6h\",\r\n      \"12h\",\r\n
+    \     \"24h\",\r\n      \"2d\",\r\n      \"7d\",\r\n      \"30d\"\r\n    ]\r\n  },\r\n
+    \ \"timezone\": \"\",\r\n  \"title\": \"MinIO Dashboard\",\r\n  \"uid\": \"TgmJnqnnk\",\r\n
+    \ \"version\": 1,\r\n  \"weekStart\": \"\"\r\n}"
